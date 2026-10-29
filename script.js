@@ -46,33 +46,34 @@ function formatHour(dateString) {
   return dateString.slice(11, 16);
 }
 
+async function findCity(city) {
+  const url = new URL("https://geocoding-api.open-meteo.com/v1/search");
+  url.search = new URLSearchParams({
+    name: city,
+    count: "1",
+    language: "id",
+    format: "json"
+  });
+
+  const response = await fetch(url);
+  if (!response.ok) throw new Error("Tidak dapat mencari lokasi.");
+
+  const data = await response.json();
+  if (!data.results || data.results.length === 0) {
+    throw new Error("Kota tidak ditemukan. Periksa ejaan nama kota.");
+  }
+
+  return data.results[0];
+}
+
 async function fetchWeather(location) {
   const params = new URLSearchParams({
     latitude: location.latitude,
     longitude: location.longitude
   });
 
+  // Permintaan prakiraan cuaca diproses oleh backend Python di Vercel
   const response = await fetch(`/api/weather?${params}`);
-
-  if (!response.ok) {
-    throw new Error("Gagal mengambil data cuaca dari server.");
-  }
-
-  return response.json();
-}
-
-async function fetchWeather(location) {
-  const params = new URLSearchParams({
-    latitude: location.latitude,
-    longitude: location.longitude,
-    current: "temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,precipitation_probability,weather_code,wind_speed_10m",
-    hourly: "temperature_2m,weather_code",
-    daily: "weather_code,temperature_2m_max,temperature_2m_min",
-    forecast_days: "7",
-    timezone: "auto"
-  });
-
-  const response = await fetch(`https://api.open-meteo.com/v1/forecast?${params}`);
 
   if (!response.ok) {
     throw new Error("Gagal mengambil data cuaca dari server.");
