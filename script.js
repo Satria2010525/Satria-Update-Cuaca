@@ -1,4 +1,3 @@
-
 const form = document.getElementById("search-form");
 const cityInput = document.getElementById("city-input");
 const searchButton = document.getElementById("search-button");
@@ -70,11 +69,15 @@ async function findCity(city) {
 async function fetchWeather(location) {
   const params = new URLSearchParams({
     latitude: location.latitude,
-    longitude: location.longitude
+    longitude: location.longitude,
+    current: "temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,precipitation_probability,weather_code,wind_speed_10m",
+    hourly: "temperature_2m,weather_code",
+    daily: "weather_code,temperature_2m_max,temperature_2m_min",
+    forecast_days: "7",
+    timezone: "auto"
   });
 
-  // Permintaan prakiraan cuaca diproses oleh backend Python.
-  const response = await fetch(`/api/weather?${params}`);
+  const response = await fetch(`https://api.open-meteo.com/v1/forecast?${params}`);
 
   if (!response.ok) {
     throw new Error("Gagal mengambil data cuaca dari server.");
