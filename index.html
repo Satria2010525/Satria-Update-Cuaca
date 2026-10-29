@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Informasi cuaca terkini, prakiraan per jam, dan prakiraan harian.">
+  <title>Cuaca Terkini</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="#">
+      <span class="brand-icon">☀</span>
+      <span>Cuaca<span class="brand-accent">Terkini</span></span>
+    </a>
+    <span class="live-status"><span></span> Data cuaca langsung</span>
+  </header>
+
+  <main class="container">
+    <section class="intro">
+      <p class="eyebrow">PRAKIRAAN CUACA INDONESIA</p>
+      <h1>Cuaca hari ini,<br><span>lebih mudah dipahami.</span></h1>
+      <p class="subtitle">Pantau kondisi cuaca, suhu, dan prakiraan cuaca di lokasi pilihanmu.</p>
+    </section>
+
+    <form id="search-form" class="search-form">
+      <span class="search-icon">⌕</span>
+      <input id="city-input" type="text" placeholder="Cari kota, misalnya Semarang..." autocomplete="off" required>
+      <button id="search-button" type="submit">Cari Cuaca</button>
+    </form>
+
+    <p id="message" class="message" role="status">Memuat data cuaca...</p>
+
+    <section id="weather-content" hidden>
+      <article class="current-card">
+        <div class="current-top">
+          <div>
+            <p class="card-label">CUACA SAAT INI</p>
+            <h2 id="city-name">Semarang</h2>
+            <p id="local-date" class="muted"></p>
+          </div>
+          <div id="weather-icon" class="weather-icon">☀️</div>
+        </div>
+
+        <div class="temperature-row">
+          <p id="temperature" class="temperature">--°</p>
+          <div>
+            <p id="weather-description" class="weather-description">Memuat...</p>
+            <p class="muted">Terasa seperti <strong id="feels-like">--°C</strong></p>
+          </div>
+        </div>
+
+        <div class="current-stats">
+          <div class="stat">
+            <span class="stat-icon">💧</span>
+            <div><p>Kelembapan</p><strong id="humidity">--%</strong></div>
+          </div>
+          <div class="stat">
+            <span class="stat-icon">💨</span>
+            <div><p>Kecepatan angin</p><strong id="wind">-- km/j</strong></div>
+          </div>
+          <div class="stat">
+            <span class="stat-icon">🌧️</span>
+            <div><p>Peluang hujan</p><strong id="rain">--%</strong></div>
+          </div>
+        </div>
+      </article>
+
+      <section class="forecast-section">
+        <div class="section-heading">
+          <div>
+            <p class="card-label">PRAKIRAAN PER JAM</p>
+            <h2>Cuaca berikutnya</h2>
+          </div>
+        </div>
+        <div id="hourly-list" class="hourly-list"></div>
+      </section>
+
+      <section class="forecast-section">
+        <div class="section-heading">
+          <div>
+            <p class="card-label">7 HARI KE DEPAN</p>
+            <h2>Prakiraan harian</h2>
+          </div>
+        </div>
+        <div id="daily-list" class="daily-list"></div>
+      </section>
+    </section>
+
+    <footer>
+      <p>CuacaTerkini · Data prakiraan dari Open-Meteo</p>
+      <p>Cuaca dapat berubah sewaktu-waktu. Gunakan data ini sebagai informasi perkiraan.</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

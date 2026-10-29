@@ -1,0 +1,400 @@
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --text: #17243a;
+  --muted: #77849a;
+  --primary: #3867f5;
+  --border: #e8edf5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "DM Sans", sans-serif;
+}
+
+.navbar {
+  height: 76px;
+  padding: 0 7%;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.brand-icon {
+  display: grid;
+  place-items: center;
+  width: 37px;
+  height: 37px;
+  border-radius: 12px;
+  background: #fff1cb;
+  color: #f2a900;
+  font-size: 26px;
+}
+
+.brand-accent {
+  color: var(--primary);
+}
+
+.live-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.live-status span {
+  width: 8px;
+  height: 8px;
+  background: #20bd83;
+  border-radius: 50%;
+}
+
+.container {
+  width: min(100% - 36px, 960px);
+  margin: 0 auto;
+}
+
+.intro {
+  padding: 55px 0 25px;
+}
+
+.eyebrow,
+.card-label {
+  color: var(--primary);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.6px;
+}
+
+.intro h1 {
+  margin: 12px 0;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: clamp(32px, 5vw, 47px);
+  line-height: 1.2;
+  letter-spacing: -1.5px;
+}
+
+.intro h1 span {
+  color: var(--primary);
+}
+
+.subtitle {
+  max-width: 520px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px;
+  margin: 12px 0 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 7px 28px #233c6810;
+}
+
+.search-icon {
+  padding-left: 10px;
+  color: var(--muted);
+  font-size: 27px;
+}
+
+.search-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 12px 4px;
+  border: none;
+  outline: none;
+  color: var(--text);
+  background: transparent;
+  font: inherit;
+}
+
+.search-form button {
+  padding: 13px 20px;
+  border: none;
+  border-radius: 10px;
+  background: var(--primary);
+  color: white;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s;
+}
+
+.search-form button:hover {
+  background: #244bd0;
+}
+
+.search-form button:disabled {
+  opacity: .6;
+  cursor: wait;
+}
+
+.message {
+  min-height: 24px;
+  margin: 14px 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.message.error {
+  color: #d33d4d;
+}
+
+.current-card {
+  padding: 28px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #fff 45%, #edf3ff);
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 35px #263e6810;
+}
+
+.current-top,
+.temperature-row,
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-label {
+  margin: 0 0 10px;
+}
+
+.current-top h2,
+.section-heading h2 {
+  margin: 0;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 23px;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.weather-icon {
+  font-size: 64px;
+}
+
+.temperature-row {
+  justify-content: flex-start;
+  gap: 24px;
+  padding: 18px 0 24px;
+}
+
+.temperature {
+  margin: 0;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: clamp(65px, 10vw, 92px);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -5px;
+}
+
+.weather-description {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.current-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.stat-icon {
+  font-size: 23px;
+}
+
+.stat p {
+  margin: 0 0 5px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.stat strong {
+  font-size: 14px;
+}
+
+.forecast-section {
+  margin-top: 36px;
+}
+
+.section-heading {
+  margin-bottom: 17px;
+}
+
+.hourly-list {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.hour-card {
+  padding: 17px 8px;
+  text-align: center;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+}
+
+.hour-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.hour-card .hour-icon {
+  margin: 15px 0;
+  font-size: 26px;
+}
+
+.hour-card strong {
+  font-size: 16px;
+}
+
+.daily-list {
+  overflow: hidden;
+  padding: 0 20px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 17px;
+}
+
+.day-row {
+  display: grid;
+  grid-template-columns: 1.3fr 50px 1fr 90px;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.day-row:last-child {
+  border-bottom: none;
+}
+
+.day-name {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.day-icon {
+  text-align: center;
+  font-size: 23px;
+}
+
+.day-description {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.day-temperatures {
+  text-align: right;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.day-temperatures span {
+  margin-left: 7px;
+  color: #9ba6b6;
+}
+
+footer {
+  padding: 35px 0 24px;
+  color: var(--muted);
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+@media (max-width: 620px) {
+  .navbar {
+    height: 65px;
+    padding: 0 18px;
+  }
+
+  .brand {
+    font-size: 17px;
+  }
+
+  .live-status {
+    font-size: 10px;
+  }
+
+  .intro {
+    padding-top: 36px;
+  }
+
+  .search-form {
+    gap: 5px;
+  }
+
+  .search-form button {
+    padding: 12px;
+    font-size: 12px;
+  }
+
+  .current-card {
+    padding: 21px;
+  }
+
+  .current-stats {
+    grid-template-columns: 1fr;
+    gap: 17px;
+  }
+
+  .hourly-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .day-row {
+    grid-template-columns: 1fr 30px 65px;
+    gap: 7px;
+  }
+
+  .day-description {
+    display: none;
+  }
+
+  .day-temperatures {
+    font-size: 12px;
+  }
+}
