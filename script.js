@@ -46,24 +46,19 @@ function formatHour(dateString) {
   return dateString.slice(11, 16);
 }
 
-async function findCity(city) {
-  const url = new URL("https://geocoding-api.open-meteo.com/v1/search");
-  url.search = new URLSearchParams({
-    name: city,
-    count: "1",
-    language: "id",
-    format: "json"
+async function fetchWeather(location) {
+  const params = new URLSearchParams({
+    latitude: location.latitude,
+    longitude: location.longitude
   });
 
-  const response = await fetch(url);
-  if (!response.ok) throw new Error("Tidak dapat mencari lokasi.");
+  const response = await fetch(`/api/weather?${params}`);
 
-  const data = await response.json();
-  if (!data.results || data.results.length === 0) {
-    throw new Error("Kota tidak ditemukan. Periksa ejaan nama kota.");
+  if (!response.ok) {
+    throw new Error("Gagal mengambil data cuaca dari server.");
   }
 
-  return data.results[0];
+  return response.json();
 }
 
 async function fetchWeather(location) {
